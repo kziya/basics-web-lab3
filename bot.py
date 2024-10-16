@@ -13,7 +13,7 @@ async def chatgpt_command_reply(update, context):
     reply = generate_chatgpt_response(text)
     await update.message.reply_text(reply)
 
-async def command_handler(update):
+async def command_handler(update, context):
     command = update.message.text.lstrip('/')
     responses = {
         "student": "Ziya Karimli IM-11",
@@ -33,6 +33,8 @@ if __name__ == "__main__":
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), chatgpt_command_reply)
     application.add_handler(echo_handler)
 
+
+    print("Starting app")
     application.run_polling()
 
 
